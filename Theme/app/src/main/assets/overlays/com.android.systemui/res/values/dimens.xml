@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="notification_material_shadow_rounded_rect_radius">0.0dip</dimen>
+    <dimen name="notification_material_rounded_rect_radius">0.0dip</dimen>
+    <dimen name="notification_material_rounded_rect_radius_negative">0.0dip</dimen>
+    <dimen name="status_bar_header_height_expanded">55.0dip</dimen>
+    <dimen name="status_bar_expanded_header_elevation">0.0dp</dimen>
+    <dimen name="fake_shadow_inset">0.0dip</dimen>
+    <dimen name="clock_expanded_bottom_margin">5.0dip</dimen>
+    <dimen name="qs_brightness_padding_top">-10.0dip</dimen>
+    <dimen name="notification_padding">0.0dip</dimen>           <!-- Platz zwischen notific. -->
+    <dimen name="notifications_top_padding">0.0dip</dimen>      <!-- Platz zwischen notific. -->
+    <dimen name="notification_side_padding">0.0dip</dimen>      <!-- Platz zwischen Seitenrand. -->
+</resources>
