@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="navigation_header_height">178dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
+    <dimen name="dialog_layout_padding">24dp</dimen>
+    <dimen name="card_padding">1dp</dimen>
+    <dimen name="textview_padding">16dp</dimen>
+    <dimen name="about_card_margin">-6dp</dimen>
+    <dimen name="about_card_margin_top_bottom">-8dp</dimen>
+    <dimen name="collaps_height">200dp</dimen>
+    <dimen name="md_baseline">16dp</dimen>
+    <dimen name="md_baseline_content">72dp</dimen>
+    <dimen name="md_app_bar_elevation">4dp</dimen>
+    <dimen name="md_drawer_max_width">400dp</dimen>
+    <dimen name="md_drawer_list_margin_vertical">8dp</dimen>
+    <dimen name="md_icon_size">24dp</dimen>
+    <dimen name="md_avatar_size">40dp</dimen>
+    <dimen name="md_big_avatar_size">64dp</dimen>
+    <dimen name="md_divider_height">1dp</dimen>
+    <dimen name="md_divider_margin">8dp</dimen>
+    <dimen name="md_list_item_height">48dp</dimen>
+    <dimen name="md_list_item_height_two_line">72dp</dimen>
+    <dimen name="md_list_item_margin">16dp</dimen>
+    <dimen name="md_list_item_text_secondary_margin">0dp</dimen>
+    <dimen name="md_fixed_list_shadow_height">4dp</dimen>
+	<dimen name="text_clock_size">20sp</dimen>
+</resources>
+
