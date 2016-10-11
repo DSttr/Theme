@@ -1,4 +1,4 @@
-package in.ds.icon;
+package com.stuepd93.pelangi;
 
 import android.app.*;
 import android.os.*;

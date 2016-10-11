@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.0"
 
     defaultConfig {
-        applicationId "in.ds.icon"
+        applicationId "com.stuepd93.pelangi"
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
@@ -20,8 +20,5 @@ android {
 }
 
 dependencies {
-	compile 'com.android.support:design:+'
-	compile 'com.android.support:support-v4:+'
-	compile 'com.android.support:appcompat-v7:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
