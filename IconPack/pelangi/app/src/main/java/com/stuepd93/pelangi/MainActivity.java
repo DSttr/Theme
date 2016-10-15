@@ -1,126 +1,176 @@
 package com.stuepd93.pelangi;
 
-import android.app.*;
-import android.os.*;
+
 import android.support.v7.app.*;
-import android.widget.AdapterView.*;
+import android.support.design.widget.*;
 import android.view.*;
-import android.widget.*;
-import android.content.*;
-import android.graphics.*;
-import java.util.*;
-import android.content.res.*;
-import android.graphics.BitmapFactory.*;
+import android.support.v4.widget.*;
+import android.support.v7.widget.*;
+import android.os.*;
+import com.stuepd93.pelangi.fragment.*;
+import android.support.v4.view.*;
+import android.support.annotation.*;
+import android.widget.Toast;
+import android.support.v4.app.Fragment;
 
-public class MainActivity extends AppCompatActivity implements OnItemClickListener
+
+
+public class MainActivity extends AppCompatActivity
 {
+	
+	private final static String APPLY_FRAGMENT= "status_bar";
+    private final static String ICON_FRAGMENT = "drawer_settings";
+    private final static String HOME_FRAGMENT = "button_settings";
+    private final static String ABOUT_FRAGMENT = "about";
+    private final static String SELECTED_TAG = "selected_index";
+	private final static int ICON = 0;
+    private final static int BARANG = 1;
+    private final static int HOME = 2;
+    private final static int ABOUT = 3;
 
-	
-	private static final String ACTION_ADW_PICK_ICON="org.adw.launcher.icons.ACTION_PICK_ICON";
-	private boolean mPickerMode=false;
-	
+	private static int selectedIndex;
+
+	private NavigationView mNavigationView;
+    private ActionBarDrawerToggle mDrawerToggle;
+	private DrawerLayout mDrawerLayout;
+	private Toolbar mToolbar;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    
+		setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		
-		int iconSize=getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-		GridView g=(GridView) findViewById(R.id.icon_grid);
-		g.setNumColumns(GridView.AUTO_FIT);
-        g.setColumnWidth(iconSize);
-        g.setStretchMode(GridView.STRETCH_SPACING_UNIFORM);
-        g.setVerticalSpacing(iconSize/3);
-        g.setOnItemClickListener(this);
-        IconsAdapter adapter=new IconsAdapter(this,iconSize);
-        g.setAdapter(adapter);
-        if(getIntent().getAction().equals(ACTION_ADW_PICK_ICON)){
-        	mPickerMode=true;
+		mToolbar = (Toolbar)findViewById(R.id.toolbar);
+		setupDikiToolbar(mToolbar);
+		
+		
+		mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
+		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
+		initNavigationDrawer(mToolbar);
+
+		if(savedInstanceState!=null){
+            mNavigationView.getMenu().getItem(savedInstanceState.getInt(SELECTED_TAG)).setChecked(true);
+            return;
         }
+		selectedIndex = ICON;
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
+														   new IconsFragment(),ICON_FRAGMENT).commit();
+
+		
     }
 	
-	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-		if(mPickerMode){
-			Intent intent=new Intent();
-			Bitmap bitmap=null;
-			try{
-				bitmap=(Bitmap) adapter.getAdapter().getItem(position);
-			}catch (Exception e) {
-			}
-			if(bitmap!=null){
-				intent.putExtra("icon",bitmap);
-				setResult(RESULT_OK, intent);
-			}else{
-				setResult(RESULT_CANCELED, intent);
-			}
-			finish();
-		}
+
+	public void tampilkanSnackbar(String message) {
+		Snackbar.make(mNavigationView, message, Snackbar.LENGTH_LONG).show();
+	}
+
+	@Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SELECTED_TAG, selectedIndex);
+    }
+
+    public void initNavigationDrawer(Toolbar toolbar) {
+
+        NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+				@Override
+				public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+					switch(menuItem.getItemId()){
+						case R.id.home_nav:
+							if(!menuItem.isChecked()){
+								selectedIndex = HOME;
+								menuItem.setChecked(true);
+								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+																							   new HomeFragment(), HOME_FRAGMENT).commit();
+							}
+							mDrawerLayout.closeDrawer(GravityCompat.START);
+								return true;
+						case R.id.apply_nav:
+							if(!menuItem.isChecked()){
+								selectedIndex = ICON;
+								menuItem.setChecked(true);
+								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+																					   new ApplyIconFragment(), APPLY_FRAGMENT).commit();
+							}
+							mDrawerLayout.closeDrawer(GravityCompat.START);
+							return true;
+						case R.id.icon_nav:
+							if(!menuItem.isChecked()){
+								selectedIndex = BARANG;
+								menuItem.setChecked(true);
+								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+																					   new IconsFragment(),ICON_FRAGMENT).commit();
+							}
+							mDrawerLayout.closeDrawer(GravityCompat.START);
+							return true;
+						case R.id.about_nav:
+							if(!menuItem.isChecked()){
+								selectedIndex = ABOUT;
+								menuItem.setChecked(true);
+								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+																					   new About(),ABOUT_FRAGMENT).commit();
+							}
+							mDrawerLayout.closeDrawer(GravityCompat.START);
+							return true;
+					}
+					return true;
+				}
+			});
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,mToolbar,R.string.drawer_open,R.string.drawer_close){
+
+            @Override
+            public void onDrawerClosed(View v){
+                super.onDrawerClosed(v);
+            }
+
+            @Override
+            public void onDrawerOpened(View v) {
+                super.onDrawerOpened(v);
+            }
+        };
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+    }
+
+	private void setupDikiToolbar(Toolbar mToolbar)
+	{
+		// TODO: Implement this method
+		setSupportActionBar(mToolbar);
+		mToolbar.setTitle("");
+
+	}
+	public void setupDikiDrawer(Toolbar mToolbar){
+        mDrawerToggle = new ActionBarDrawerToggle(
+			this,
+			mDrawerLayout,
+			mToolbar,
+			R.string.drawer_open,
+			R.string.drawer_close
+        ) {
+
+            public void onDrawerClosed(View view) {
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu();
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
+    }
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
 	
-	private class IconsAdapter extends BaseAdapter{
-		private Context mContext;
-		private int mIconSize;
-		public IconsAdapter(Context mContext, int iconsize) {
-			super();
-			this.mContext = mContext;
-			this.mIconSize = iconsize;
-			loadIcons();
-		}
-
-		@Override
-		public int getCount() {
-			return mThumbs.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-			BitmapFactory.Options opts = new BitmapFactory.Options();
-		   // Options opts=new BitmapFactory.Options();
-		    opts.inPreferredConfig=Bitmap.Config.ARGB_8888;
-		    
-			return BitmapFactory.decodeResource(mContext.getResources(), mThumbs.get(position), opts);
-		}
-
-		@Override
-		public long getItemId(int position) {
-			return position;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView;
-            if (convertView == null) {
-                imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(mIconSize, mIconSize));
-            } else {
-                imageView = (ImageView) convertView;
-            }
-            imageView.setImageResource(mThumbs.get(position));
-            return imageView;
-		}
-
-		private ArrayList<Integer> mThumbs;
-
-	    private void loadIcons() {
-	        mThumbs = new ArrayList<Integer>();
-
-	        final Resources resources = getResources();
-	        final String packageName = getApplication().getPackageName();
-
-	        addIcons(resources, packageName, R.array.icon_pack);
-	    }
-	    private void addIcons(Resources resources, String packageName, int list) {
-	        final String[] extras = resources.getStringArray(list);
-	        for (String extra : extras) {
-	            int res = resources.getIdentifier(extra, "drawable", packageName);
-	            if (res != 0) {
-	                final int thumbRes = resources.getIdentifier(extra,"drawable", packageName);
-	                if (thumbRes != 0) {
-	                    mThumbs.add(thumbRes);
-	                }
-	            }
-	        }
-	    }
-
-	}
 }

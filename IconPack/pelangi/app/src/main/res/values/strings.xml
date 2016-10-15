@@ -2,6 +2,62 @@
 <resources>
 
     <string name="app_name">pelangi</string>
+	<string name="theme_title">P.elangi</string>
     <string name="hello_world">Hello world!</string>
+	<string name="drawer_open">Drawer opened</string>
+    <string name="drawer_close">Drawer closed</string>
+	<string name="collapsing_toolbar_fragment_title">Collapsing toolbar</string>
 
+	<string name="text_about">This is sample app created using design support library by google.
+		Design support library makes implementation of material design in app which is also compatible
+        with pre-lollipop devices(till API level 7) very easy.
+		Find more about design support library at http://android-developers.blogspot.in/2015/05/android-design-support-library.html
+        \n\n\nFind source code of app on github at https://github.com/sagar-viradiya/android-design-support-lib-demo
+		\n\n\nFind more about me on LinkedIn at in.linkedin.com/in/sagarviradiya</string>
+
+    <string name="google_license">
+
+		Copyright (C) 2005-2015 The Android Open Source Project\n\nLicensed under the Apache License,
+        Version 2.0 (the "License");\nyou may not use this file except in compliance with the License.
+        \nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless
+        required by applicable law or agreed to in writing, software distributed under the
+        License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+        either express or implied. See the License for the specific language governing permissions
+        and limitations under the License.
+
+    </string>
+	<string name="cm_dialog_content">" is part of CyanogenMod (based) roms.\nWould you like to install it in your device?"</string>
+    <string name="lni_content">" is currently not installed in your device.\nWould you like to install it from Google Play Store?"</string>
+    <string name="lni_title">" Not Installed"</string>
+    <string name="lni_yes">Yes</string>
+    <string name="lni_no">No</string>
+    <string name="share">Share Theme</string>
+    <string name="sendemail">Email Developer</string>
+    <string name="changelog">See Changelog</string>
+    <string name="share_one">"Check out this awesome icon pack by "</string>
+    <string name="share_two">.\nGet it now at </string>
+    <string name="share_title">Share via</string>
+    <string name="changelog_dialog_title">Changelog</string>
+    <string name="nice">great</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="library">Library</string>
+    <string name="website">Website</string>
+    <string name="about_card_app_title">Template</string>
+    <string name="about_card_app_desc">Template used in this app is developed by <b>Archit Jain</b>. Code is available on Github\n Copyright &#169;
+        2015 Archit Jain\nLicensed under MIT License.</string>
+    <string name="about_card_app_button">Github</string>
+    <string name="about_card_app_link">https://github.com/architjn/MaterialIconPackTemplate</string>
+    <string name="about_card_app_link2">http://plus.google.com/+architjn</string>
+    <string name="about_card_licenses">Implemented Libraries</string>
+    <string name="about_card__based_on">This project is based on PaperBoard by Jahir Fiquitiva</string>
+    <string name="license_failed_title">License Check Failed</string>
+    <string name="license_failed">"You are not downloading this iconpack from Google Play Store. You have two options only:"</string>
+    <string name="download">DOWNLOAD</string>
+    <string name="exit">Exit App</string>
+    <string name="extraapp">com.momocode.shortcuts</string>
+    <string name="gnl_title">Google Now Launcher Not Compatible</string>
+    <string name="gnl_content">Google Now Launcher is NOT compatible with ANY Icon Packs. Please don\'t low rate the pack for this reason. There\'s a workaround that you can try by yourself, and it\'s the use of an external app that will help you apply the icons. Would you like to download it?</string>
+    <string name="permission_storage_rationale">Storage permission is needed to set Wallpaper.</string>
+    <string name="ok">Ok</string>
 </resources>
