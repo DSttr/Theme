@@ -21,6 +21,7 @@ import com.stuepd93.pelangi.item.*;
 import com.stuepd93.pelangi.*;
 import com.stuepd93.pelangi.util.*;
 import com.stuepd93.pelangi.Adapter.*;
+import android.app.*;
 
 /**
  * Created by architjn on 04/01/16.
@@ -30,26 +31,34 @@ public class ApplyIconFragment extends Fragment {
     private ArrayList<LauncherListItem> launchers = new ArrayList<>();
     private View mainView;
     private Context context;
+	private MainActivity mainActivity;
+
+	
+	private Toolbar mToolbar;
+	
+	public ApplyIconFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mainActivity = (MainActivity)activity;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.activity_apply, container, false);
         context = mainView.getContext();
-        setActionBar((Toolbar) mainView.findViewById(R.id.toolbar_apply));
+		mToolbar = (Toolbar)mainView.findViewById(R.id.toolbar_apply);
+        setupToolbar();
         if (Build.VERSION.SDK_INT >= 21) {
             getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
             getActivity().getWindow().setNavigationBarColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
         }
         init();
         return mainView;
-    }
-
-    private void setActionBar(Toolbar toolbar) {
-        MainActivity activity = ((MainActivity) getActivity());
-        activity.setSupportActionBar(toolbar);
-		toolbar.setTitle("Apply Icon");
-        //activity.updateToggleButton(toolbar);
     }
 
     private void init() {
@@ -81,6 +90,17 @@ public class ApplyIconFragment extends Fragment {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+	
+	@Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mainActivity.setupDikiDrawer(mToolbar);
+    }
+	
+	private void setupToolbar(){
+        mainActivity.setSupportActionBar(mToolbar);
+		mToolbar.setTitle("Apply Icon");
     }
 
 }

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.stuepd93.pelangi.*;
 import com.stuepd93.pelangi.Adapter.*;
 import android.support.design.widget.*;
+import android.app.*;
 
 
 /**
@@ -27,6 +28,17 @@ public class IconsFragment extends Fragment {
     private View mainView;
     private Context context;
 
+	private MainActivity appCompatActivity;
+	
+	public IconsFragment(){
+		
+	}
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        appCompatActivity = (MainActivity)activity;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +61,7 @@ public class IconsFragment extends Fragment {
         MainActivity activity = ((MainActivity) getActivity());
         activity.setSupportActionBar(toolbar);
 		toolbar.setTitle("Icon");
-        //activity.updateToggleButton(toolbar);
+     
     }
 
     private void init() {
@@ -74,6 +86,12 @@ public class IconsFragment extends Fragment {
         args.putInt("iconsArrayId", iconArray);
         fragment.setArguments(args);
         return fragment;
+    }
+	
+	@Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        appCompatActivity.setupDikiDrawer(toolbar);
     }
 }
 

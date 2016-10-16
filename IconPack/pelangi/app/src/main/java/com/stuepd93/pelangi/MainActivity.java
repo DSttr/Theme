@@ -12,21 +12,34 @@ import android.support.v4.view.*;
 import android.support.annotation.*;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
+import kr.co.namee.permissiongen.*;
+import android.*;
+import android.content.*;
 
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements
+NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 {
+
+	@Override
+	public void onClick(View p1)
+	{
+		// TODO: Implement this method
+	}
+
 	
-	private final static String APPLY_FRAGMENT= "status_bar";
-    private final static String ICON_FRAGMENT = "drawer_settings";
-    private final static String HOME_FRAGMENT = "button_settings";
+	private final static String APPLY_FRAGMENT= "apply_fragment";
+    private final static String ICON_FRAGMENT = "icon_fragment";
+    private final static String HOME_FRAGMENT = "home_fragment";
+	private final static String REQ_FRAGMENT = "home_fragment";
     private final static String ABOUT_FRAGMENT = "about";
     private final static String SELECTED_TAG = "selected_index";
 	private final static int ICON = 0;
     private final static int BARANG = 1;
     private final static int HOME = 2;
     private final static int ABOUT = 3;
+	private final static int REQ = 4;
 
 	private static int selectedIndex;
 
@@ -45,10 +58,11 @@ public class MainActivity extends AppCompatActivity
 		mToolbar = (Toolbar)findViewById(R.id.toolbar);
 		setupDikiToolbar(mToolbar);
 		
+		reqPerms();
 		
 		mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
+		mNavigationView.setNavigationItemSelectedListener(this);
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
-		initNavigationDrawer(mToolbar);
 
 		if(savedInstanceState!=null){
             mNavigationView.getMenu().getItem(savedInstanceState.getInt(SELECTED_TAG)).setChecked(true);
@@ -73,10 +87,6 @@ public class MainActivity extends AppCompatActivity
         outState.putInt(SELECTED_TAG, selectedIndex);
     }
 
-    public void initNavigationDrawer(Toolbar toolbar) {
-
-        NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
 				@Override
 				public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -109,6 +119,15 @@ public class MainActivity extends AppCompatActivity
 							}
 							mDrawerLayout.closeDrawer(GravityCompat.START);
 							return true;
+						case R.id.req_nav:
+							if(!menuItem.isChecked()){
+								selectedIndex = REQ;
+								menuItem.setChecked(true);
+								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+																					   new RequestFragment(), REQ_FRAGMENT).commit();
+							}
+							mDrawerLayout.closeDrawer(GravityCompat.START);
+							return true;
 						case R.id.about_nav:
 							if(!menuItem.isChecked()){
 								selectedIndex = ABOUT;
@@ -121,23 +140,6 @@ public class MainActivity extends AppCompatActivity
 					}
 					return true;
 				}
-			});
-
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,mToolbar,R.string.drawer_open,R.string.drawer_close){
-
-            @Override
-            public void onDrawerClosed(View v){
-                super.onDrawerClosed(v);
-            }
-
-            @Override
-            public void onDrawerOpened(View v) {
-                super.onDrawerOpened(v);
-            }
-        };
-        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-    }
 
 	private void setupDikiToolbar(Toolbar mToolbar)
 	{
@@ -167,6 +169,53 @@ public class MainActivity extends AppCompatActivity
         mDrawerToggle.syncState();
 
     }
+	
+	public void switchFragment(Fragment fragment, boolean b) {
+        if (!b)
+            getSupportFragmentManager().beginTransaction()
+				.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+				.replace(R.id.fragment_container, fragment).commit();
+        else
+            getSupportFragmentManager().beginTransaction().addToBackStack(null)
+				.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+				.replace(R.id.fragment_container, fragment).commit();
+    }
+	
+	private void reqPerms(){
+		PermissionGen.with(MainActivity.this)
+			.addRequestCode(100)
+			.permissions(
+			Manifest.permission.CAMERA,
+			Manifest.permission.INTERNET,
+			Manifest.permission.READ_EXTERNAL_STORAGE,
+			Manifest.permission.WRITE_EXTERNAL_STORAGE)
+			.request();
+	}
+	
+	@PermissionSuccess(requestCode = 100)
+	public void doSomething(){
+		// Lakukan sesuatu disini
+	}
+	@PermissionFail(requestCode = 100)
+	public void doFailSomething(){
+		AlertDialog.Builder dlg=new AlertDialog.Builder(this);
+		dlg.setTitle("Perijinan ditolak");
+		dlg.setCancelable(false);
+		dlg.setMessage("Untuk menggunakan Aplikasi ini kamu perlu membolehkan beberapa perijinan yang diajukan. Atau Aplikasi ini tidak bisa digunakan");
+		dlg.setNegativeButton("Keluar", new DialogInterface.OnClickListener(){
+				@Override
+				public void onClick(DialogInterface p1, int p2) {
+					MainActivity.this.finish();
+				}
+			});
+		dlg.show();
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions,
+										   int[] grantResults) {
+		PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+	}
 	
 	@Override
 	protected void onDestroy() {

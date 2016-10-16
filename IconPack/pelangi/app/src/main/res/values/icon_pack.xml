@@ -42,7 +42,7 @@
     <!-- Game icons are listed here -->
     <string name="games">Games</string>
     <string-array name="games">
-		<item>ic_unknown</item>
+		<item>clashofclans</item>
 		<item>ic_unknown</item>
 		<item>ic_unknown</item>
 		<item>ic_unknown</item>
@@ -70,15 +70,15 @@
 		<item>contacts_new_blue</item>
 		<item>galery_light</item>
 		<item>playstore</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
-		<item>ic_unknown</item>
+		<item>asus_gallery</item>
+		<item>android</item>
+		<item>asus_music</item>
+		<item>backgrounds_hd</item>
+		<item>browser</item>
+		<item>busybox</item>
+		<item>calculator_red</item>
+		<item>calendar_</item>
+		<item>clashofclans</item>
 		<item>ic_unknown</item>
 		<item>ic_unknown</item>
 		<item>ic_unknown</item>

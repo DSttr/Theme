@@ -1,111 +1,94 @@
 package com.stuepd93.pelangi.fragment;
 
-import com.stuepd93.pelangi.*;
-import android.support.v7.widget.Toolbar;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.app.*;
-import android.view.*;
-import android.os.*;
-import android.support.design.widget.*;
-import android.widget.*;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.net.*;
-import android.content.*;
-import android.support.annotation.*;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class HomeFragment extends Fragment 
-{
-	private MainActivity appCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.stuepd93.pelangi.*;
+import com.stuepd93.pelangi.item.*;
+import com.stuepd93.pelangi.Adapter.*;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HomeFragment extends Fragment {
+
+
+
+    private List<CardItemModel> cardItems = new ArrayList<>(30);
+    private MainActivity appCompatActivity;
     private Toolbar toolbar;
-	private View mainView;
-	private Context context;
-	
-	public HomeFragment() {
+    private RecyclerView recyclerView;
+
+
+    public HomeFragment() {
         // Required empty public constructor
     }
-	
-	@Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-		
-        View mainView = inflater.inflate(R.layout.home_fragment, container, false);
 
-		context = mainView.getContext();
-		init();
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        appCompatActivity = (MainActivity)activity;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.home_fragment, container, false);
+
+        toolbar = (Toolbar)view.findViewById(R.id.toolbar);
 
         setupToolbar();
-
-        return mainView;
-    }
-
-	private void init()
-	{
-		// TODO: Implement this method
-		toolbar = (Toolbar)mainView.findViewById(R.id.toolbar);
-		((CollapsingToolbarLayout)mainView.findViewById(R.id.collapsing_toolbar)).setTitle(
-			getString(R.string.collapsing_toolbar_fragment_title));
-        setCards();
-		/*(mainView.findViewById(R.id.fab_main)).setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					((MainActivity) getActivity()).Fragment(new ApplyIconFragment(), true);
-				}
-			});*/
-        getHomeActivity().initNavigationDrawer(toolbar);
 		
-	}
-	
-	
-	private MainActivity getHomeActivity() {
-        return ((MainActivity) getActivity());
+		((CollapsingToolbarLayout)view.findViewById(R.id.collapsing_toolbar)).setTitle(
+			getString(R.string.collapsing_toolbar_fragment_title));
+
+        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+
+        setupRecyclerView();
+
+        return view;
     }
-	
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        appCompatActivity.initNavigationDrawer(toolbar);
+        appCompatActivity.setupDikiDrawer(toolbar);
     }
 
     private void setupToolbar(){
         toolbar.setTitle("");
         appCompatActivity.setSupportActionBar(toolbar);
     }
-	
-	private void setCards() {
-        Button button1, button2, button3;
-        button1 = (Button) mainView.findViewById(R.id.home_card_one_button);
-        button2 = (Button) mainView.findViewById(R.id.home_card_two_button);
-        button3 = (Button) mainView.findViewById(R.id.home_card_three_button);
-        button1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Uri uri = Uri.parse(getResources().getString(R.string.card1_link));
-					Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-					startActivity(goToMarket);
-				}
-			});
-        if (!getResources().getBoolean(R.bool.card1_visible))
-            (mainView.findViewById(R.id.main_card2)).setVisibility(View.GONE);
-        button2.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Uri uri = Uri.parse(getResources().getString(R.string.card2_link));
-					Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-					startActivity(goToMarket);
-				}
-			});
-        if (!getResources().getBoolean(R.bool.card2_visible))
-            (mainView.findViewById(R.id.main_card2)).setVisibility(View.GONE);
-        button3.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Uri uri = Uri.parse(getResources().getString(R.string.card3_link));
-					Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-					startActivity(goToMarket);
-				}
-			});
-        if (!getResources().getBoolean(R.bool.card3_visible))
-            (mainView.findViewById(R.id.main_card3)).setVisibility(View.GONE);
+
+    private void setupRecyclerView(){
+        recyclerView.setLayoutManager(new LinearLayoutManager(appCompatActivity));
+        recyclerView.setHasFixedSize(true);
+        initializeCardItemList();
+        recyclerView.setAdapter(new RecyclerAdapter(cardItems));
+    }
+
+    private void initializeCardItemList(){
+        CardItemModel cardItemModel;
+        String[] cardTitles = getResources().getStringArray(R.array.card_titles);
+        String[] cardContents = getResources().getStringArray(R.array.card_contents);
+        final int length = cardTitles.length;
+        for(int i=0;i<length;i++){
+            cardItemModel = new CardItemModel(cardTitles[i],cardContents[i]);
+            cardItems.add(cardItemModel);
+        }
     }
 }
+

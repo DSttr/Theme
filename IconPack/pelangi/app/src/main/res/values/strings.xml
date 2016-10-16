@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">pelangi</string>
-	<string name="theme_title">P.elangi</string>
+    <string name="app_name">Pelangi</string>
+	<string name="theme_title">Pelangi</string>
     <string name="hello_world">Hello world!</string>
 	<string name="drawer_open">Drawer opened</string>
     <string name="drawer_close">Drawer closed</string>
 	<string name="collapsing_toolbar_fragment_title">Collapsing toolbar</string>
+	
+	<!-- Mail subjects for simple e-mail and requests e-mail -->
+    <string name="send_title">Send Mail</string>
+    <string name="email_id">stuepdude@gmail.com</string>
+    <string name="email_subject">"MaterialIcons"</string>
+    <string name="email_request_subject">"Pelangi - Icon Requests"</string>
+	
 
 	<string name="text_about">This is sample app created using design support library by google.
 		Design support library makes implementation of material design in app which is also compatible
