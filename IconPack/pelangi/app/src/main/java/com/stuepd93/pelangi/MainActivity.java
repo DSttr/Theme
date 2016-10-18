@@ -46,20 +46,15 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 	private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
 	private DrawerLayout mDrawerLayout;
-	private Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-    
-		setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		
-		mToolbar = (Toolbar)findViewById(R.id.toolbar);
-		setupDikiToolbar(mToolbar);
-		
+
 		reqPerms();
-		
+
 		mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
 		mNavigationView.setNavigationItemSelectedListener(this);
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
@@ -72,8 +67,6 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
 														   new IconsFragment(),ICON_FRAGMENT).commit();
-
-		
     }
 	
 
