@@ -1,157 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.sagar.materialdesigndemo.AboutFragment">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:card_view="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.stuepd93.pelangi.fragment.About">
 
+	<android.support.v7.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/about_card_margin"
+		android:layout_marginRight="@dimen/about_card_margin"
+		android:layout_marginTop="@dimen/about_card_margin_top_bottom"
+		card_view:cardElevation="@dimen/card_elevation"
+		card_view:cardUseCompatPadding="true"
+		card_view:cardCornerRadius="2dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/about_card_margin"
-        android:layout_marginRight="@dimen/about_card_margin"
-        android:layout_marginTop="@dimen/about_card_margin_top_bottom"
-        card_view:cardElevation="@dimen/card_elevation"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="2dp">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_launcher"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher"/>
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:layout_gravity="center"
+					android:layout_marginLeft="16dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="16dp">
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="20sp"
+						android:text="@string/app_name"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="@string/app_name"/>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:text="v1.0"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="v1.0"/>
+				</LinearLayout>
 
-                </LinearLayout>
+			</LinearLayout>
 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/text_about"
+				android:autoLink="web"
+				android:textColorLink="@color/colorAccent"
+				android:padding="16dp"/>
 
-            </LinearLayout>
+		</LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_about"
-                android:autoLink="web"
-                android:textColorLink="@color/colorAccent"
-                android:padding="16dp"/>
+	</android.support.v7.widget.CardView>
 
+	<android.support.v7.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/about_card_margin"
+		android:layout_marginRight="@dimen/about_card_margin"
+		card_view:cardElevation="@dimen/card_elevation"
+		card_view:cardUseCompatPadding="true"
+		card_view:cardCornerRadius="2dp">
 
-        </LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="0dp">
 
-    </android.support.v7.widget.CardView>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@android:color/primary_text_light"
+				android:textSize="@dimen/abc_text_size_medium_material"
+				android:text="Developer"
+				android:paddingTop="16dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:textStyle="normal"/>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/about_card_margin"
-        android:layout_marginRight="@dimen/about_card_margin"
-        card_view:cardElevation="@dimen/card_elevation"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="2dp">
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="DSttr"
+				android:paddingTop="10dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:textStyle="bold"
+				android:paddingBottom="10dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+		</LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/primary_text_light"
-                android:textSize="@dimen/abc_text_size_medium_material"
-                android:text="Copyright 2015" />
+	</android.support.v7.widget.CardView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sagar Viradiya" />
+	<android.support.v7.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/about_card_margin"
+		android:layout_marginRight="@dimen/about_card_margin"
+		card_view:cardElevation="@dimen/card_elevation"
+		card_view:cardUseCompatPadding="true"
+		card_view:cardCornerRadius="2dp">
 
-        </LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="0dp">
 
-    </android.support.v7.widget.CardView>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@android:color/primary_text_light"
+				android:textSize="@dimen/abc_text_size_medium_material"
+				android:text="Designer"
+				android:paddingTop="16dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:textStyle="normal"/>
 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="Stuepd93"
+				android:paddingTop="10dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:textStyle="bold"
+				android:paddingBottom="10dp"/>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/license_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/about_card_margin"
-        android:layout_marginRight="@dimen/about_card_margin"
-        android:layout_marginBottom="@dimen/about_card_margin_top_bottom"
-        android:foreground="?selectableItemBackground"
-        card_view:cardElevation="@dimen/card_elevation"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="2dp">
+		</LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+	</android.support.v7.widget.CardView>
 
+	<android.support.v7.widget.CardView
+		android:id="@+id/license_card"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/about_card_margin"
+		android:layout_marginRight="@dimen/about_card_margin"
+		android:layout_marginBottom="@dimen/about_card_margin_top_bottom"
+		android:foreground="?selectableItemBackground"
+		card_view:cardElevation="@dimen/card_elevation"
+		card_view:cardUseCompatPadding="true"
+		card_view:cardCornerRadius="2dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="Open Source License"
-                android:padding="16dp"/>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="24sp"
+				android:text="Open Source License"
+				android:padding="16dp"
+				android:textStyle="bold"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Android Open Source Project"
-                android:textColor="@android:color/primary_text_light"
-                android:paddingTop="16dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp" />
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="2dp"
+				android:background="@color/colorAccent"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@string/google_license"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Android Open Source Project"
+				android:textColor="@android:color/primary_text_light"
+				android:paddingTop="16dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"/>
 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="@string/google_license"/>
 
-        </LinearLayout>
+		</LinearLayout>
 
-    </android.support.v7.widget.CardView>
+	</android.support.v7.widget.CardView>
 
 </LinearLayout>
+
+

@@ -15,12 +15,9 @@
     <string name="email_request_subject">"Pelangi - Icon Requests"</string>
 	
 
-	<string name="text_about">This is sample app created using design support library by google.
-		Design support library makes implementation of material design in app which is also compatible
-        with pre-lollipop devices(till API level 7) very easy.
-		Find more about design support library at http://android-developers.blogspot.in/2015/05/android-design-support-library.html
-        \n\n\nFind source code of app on github at https://github.com/sagar-viradiya/android-design-support-lib-demo
-		\n\n\nFind more about me on LinkedIn at in.linkedin.com/in/sagarviradiya</string>
+	<string name="text_about">
+		This is simple icon packwith a material design for your home screen, we called this with name <b>Pelangi</b> \n\nFind more about we on \n<b>Google Plus</b>
+		</string>
 
     <string name="google_license">
 
