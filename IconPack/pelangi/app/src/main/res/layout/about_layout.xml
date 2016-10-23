@@ -21,25 +21,28 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical">
+			android:orientation="vertical"
+			android:gravity="center">
 
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:orientation="horizontal"
-				android:padding="16dp">
+				android:orientation="vertical"
+				android:padding="16dp"
+				android:gravity="center">
 
-				<ImageView
+				<view.CircleImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/ic_launcher"/>
+					android:src="@drawable/android"
+					android:layout_gravity="center"/>
 
 				<LinearLayout
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:orientation="vertical"
 					android:layout_gravity="center"
-					android:layout_marginLeft="16dp">
+					android:gravity="center">
 
 					<TextView
 						android:layout_width="wrap_content"
@@ -56,6 +59,11 @@
 				</LinearLayout>
 
 			</LinearLayout>
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="2dp"
+				android:background="@color/colorAccent"/>
 
 			<TextView
 				android:layout_width="match_parent"
@@ -63,7 +71,9 @@
 				android:text="@string/text_about"
 				android:autoLink="web"
 				android:textColorLink="@color/colorAccent"
-				android:padding="16dp"/>
+				android:padding="16dp"
+				android:gravity="center"
+				android:textSize="15sp"/>
 
 		</LinearLayout>
 
@@ -76,34 +86,66 @@
 		android:layout_marginRight="@dimen/about_card_margin"
 		card_view:cardElevation="@dimen/card_elevation"
 		card_view:cardUseCompatPadding="true"
-		card_view:cardCornerRadius="2dp">
+		card_view:cardCornerRadius="2dp"
+		android:layout_margin="6dp">
 
 		<LinearLayout
-			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
 			android:orientation="vertical"
-			android:padding="0dp">
+			android:gravity="center">
 
-			<TextView
+			<RelativeLayout
+				android:layout_height="200dp"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@android:color/primary_text_light"
-				android:textSize="@dimen/abc_text_size_medium_material"
-				android:text="Developer"
-				android:paddingTop="16dp"
-				android:paddingLeft="16dp"
-				android:paddingRight="16dp"
-				android:textStyle="normal"/>
+				android:gravity="center"
+				android:layout_gravity="center">
 
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:text="DSttr"
-				android:paddingTop="10dp"
-				android:paddingLeft="16dp"
-				android:paddingRight="16dp"
-				android:textStyle="bold"
-				android:paddingBottom="10dp"/>
+				<LinearLayout
+					android:layout_height="130dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:src="@drawable/header_img"
+						android:id="@+id/img"
+						android:scaleType="fitXY"/>
+
+				</LinearLayout>
+
+				<view.CircleImageView
+					android:layout_width="90dp"
+					android:layout_height="90dp"
+					android:src="@drawable/poto_dk"
+					android:layout_centerInParent="true"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:gravity="center"
+					android:layout_alignParentBottom="true"
+					android:layout_margin="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="Developer"
+						android:textSize="20sp"
+						android:textStyle="bold"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="DSttr"
+						android:textSize="16sp"
+						android:textStyle="bold"/>
+
+				</LinearLayout>
+
+			</RelativeLayout>
 
 		</LinearLayout>
 
@@ -116,34 +158,66 @@
 		android:layout_marginRight="@dimen/about_card_margin"
 		card_view:cardElevation="@dimen/card_elevation"
 		card_view:cardUseCompatPadding="true"
-		card_view:cardCornerRadius="2dp">
+		card_view:cardCornerRadius="2dp"
+		android:layout_margin="6dp">
 
 		<LinearLayout
-			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
 			android:orientation="vertical"
-			android:padding="0dp">
+			android:gravity="center">
 
-			<TextView
+			<RelativeLayout
+				android:layout_height="200dp"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@android:color/primary_text_light"
-				android:textSize="@dimen/abc_text_size_medium_material"
-				android:text="Designer"
-				android:paddingTop="16dp"
-				android:paddingLeft="16dp"
-				android:paddingRight="16dp"
-				android:textStyle="normal"/>
+				android:gravity="center"
+				android:layout_gravity="center">
 
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:text="Stuepd93"
-				android:paddingTop="10dp"
-				android:paddingLeft="16dp"
-				android:paddingRight="16dp"
-				android:textStyle="bold"
-				android:paddingBottom="10dp"/>
+				<LinearLayout
+					android:layout_height="130dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<ImageView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:src="@drawable/header_img"
+						android:id="@+id/img"
+						android:scaleType="fitXY"/>
+
+				</LinearLayout>
+
+				<view.CircleImageView
+					android:layout_width="90dp"
+					android:layout_height="90dp"
+					android:src="@drawable/stuep_pp"
+					android:layout_centerInParent="true"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:gravity="center"
+					android:layout_alignParentBottom="true"
+					android:layout_margin="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="Designer"
+						android:textSize="20sp"
+						android:textStyle="bold"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="Stuepd93"
+						android:textSize="16sp"
+						android:textStyle="bold"/>
+
+				</LinearLayout>
+
+			</RelativeLayout>
 
 		</LinearLayout>
 
@@ -159,7 +233,8 @@
 		android:foreground="?selectableItemBackground"
 		card_view:cardElevation="@dimen/card_elevation"
 		card_view:cardUseCompatPadding="true"
-		card_view:cardCornerRadius="2dp">
+		card_view:cardCornerRadius="2dp"
+		android:layout_margin="6dp">
 
 		<LinearLayout
 			android:layout_width="match_parent"

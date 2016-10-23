@@ -29,5 +29,5 @@ dependencies {
     compile 'de.psdev.licensesdialog:licensesdialog:1.8.1'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':async-0.2.3')
+    //compile project(':async-0.2.3')
 }

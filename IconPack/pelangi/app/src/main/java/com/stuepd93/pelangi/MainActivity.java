@@ -33,13 +33,15 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
     private final static String ICON_FRAGMENT = "icon_fragment";
     private final static String HOME_FRAGMENT = "home_fragment";
 	private final static String REQ_FRAGMENT = "home_fragment";
+	private final static String WALL_FRAGMENT = "wal_fragment";
     private final static String ABOUT_FRAGMENT = "about";
     private final static String SELECTED_TAG = "selected_index";
 	private final static int ICON = 0;
-    private final static int BARANG = 1;
+    private final static int APPLY = 1;
     private final static int HOME = 2;
     private final static int ABOUT = 3;
 	private final static int REQ = 4;
+	private final static int WALL = 4;
 
 	private static int selectedIndex;
 
@@ -63,10 +65,10 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
             mNavigationView.getMenu().getItem(savedInstanceState.getInt(SELECTED_TAG)).setChecked(true);
             return;
         }
-		selectedIndex = ICON;
+		selectedIndex = HOME;
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
-														   new IconsFragment(),ICON_FRAGMENT).commit();
+														   new HomeFragment(),HOME_FRAGMENT).commit();
     }
 	
 
@@ -96,7 +98,7 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 								return true;
 						case R.id.apply_nav:
 							if(!menuItem.isChecked()){
-								selectedIndex = ICON;
+								selectedIndex = APPLY;
 								menuItem.setChecked(true);
 								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 																					   new ApplyIconFragment(), APPLY_FRAGMENT).commit();
@@ -105,7 +107,7 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 							return true;
 						case R.id.icon_nav:
 							if(!menuItem.isChecked()){
-								selectedIndex = BARANG;
+								selectedIndex = ICON;
 								menuItem.setChecked(true);
 								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 																					   new IconsFragment(),ICON_FRAGMENT).commit();
@@ -118,6 +120,15 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 								menuItem.setChecked(true);
 								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 																					   new RequestFragment(), REQ_FRAGMENT).commit();
+							}
+							mDrawerLayout.closeDrawer(GravityCompat.START);
+							return true;
+						case R.id.wall_nav:
+							if(!menuItem.isChecked()){
+								selectedIndex = WALL;
+								menuItem.setChecked(true);
+								getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+																					   new WallpaperFragment(), WALL_FRAGMENT).commit();
 							}
 							mDrawerLayout.closeDrawer(GravityCompat.START);
 							return true;
@@ -178,7 +189,7 @@ NavigationView.OnNavigationItemSelectedListener,View.OnClickListener
 		PermissionGen.with(MainActivity.this)
 			.addRequestCode(100)
 			.permissions(
-			Manifest.permission.CAMERA,
+			Manifest.permission.SET_WALLPAPER,
 			Manifest.permission.INTERNET,
 			Manifest.permission.READ_EXTERNAL_STORAGE,
 			Manifest.permission.WRITE_EXTERNAL_STORAGE)
